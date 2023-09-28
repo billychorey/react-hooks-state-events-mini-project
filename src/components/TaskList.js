@@ -9,7 +9,7 @@ function TaskList({tasks, handleDeleteTask}) {
   return (
     <div className="tasks">
       {tasks.map(task => (
-        <Task task={task} key={task.text} handleDeleteTask={handleDeleteTask}/>
+        <Task task={task} text={task.text} category={task.category} key={task.text} handleDeleteTask={handleDeleteTask}/>
       ))}
     </div>
   );

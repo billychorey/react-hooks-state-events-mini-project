@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ categories, handleAddNewTask }) {
+function NewTaskForm({ categories, onTaskFormSubmit }) {
   const [details, setDetails] = useState('');
-  const [category, setCategory] = useState('');
-  
+  const [category, setCategory] = useState('Code'); // Set a default category
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let newTask = {text: details, category: category}
-    handleAddNewTask(newTask)
+    let newTask = { text: details, category: category };
+    onTaskFormSubmit(newTask);
   }
 
   return (

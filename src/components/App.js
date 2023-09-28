@@ -12,12 +12,11 @@ function App() {
   const [categories, setCategories] = useState(CATEGORIES);
 
 const handleDeleteTask = (deletedTask)  =>{
-  console.log('hey')
   const filteredTasks = tasks.filter((task) => deletedTask.text !== task.text)
   setTasks(filteredTasks);
 }
 
-const handleAddNewTask = (newTask) => {
+const onTaskFormSubmit = (newTask) => {
   setTasks([...tasks, newTask])
 }
 
@@ -34,8 +33,8 @@ const handleCategoryFilter = (selectedCategory) => {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={categories} onCategoryFilter={handleCategoryFilter} />
-      <NewTaskForm categories={categories} handleAddNewTask={handleAddNewTask} />
-      <TaskList tasks={tasks} handleDeleteTask={handleDeleteTask}/>
+      <NewTaskForm categories={categories} onTaskFormSubmit={onTaskFormSubmit} />
+      <TaskList tasks={tasks} categories={categories} handleDeleteTask={handleDeleteTask}/>
     </div>
   );
 }
