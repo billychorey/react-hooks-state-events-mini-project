@@ -21,11 +21,20 @@ const handleAddNewTask = (newTask) => {
   setTasks([...tasks, newTask])
 }
 
+const handleCategoryFilter = (selectedCategory) => {
+  if (selectedCategory === "All") {
+    setTasks(TASKS);
+  } else {
+    const filteredTasks = TASKS.filter((task) => task.category === selectedCategory);
+    setTasks(filteredTasks);
+  }
+};
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
-<NewTaskForm categories={categories} handleAddNewTask={handleAddNewTask} />
+      <CategoryFilter categories={categories} onCategoryFilter={handleCategoryFilter} />
+      <NewTaskForm categories={categories} handleAddNewTask={handleAddNewTask} />
       <TaskList tasks={tasks} handleDeleteTask={handleDeleteTask}/>
     </div>
   );
